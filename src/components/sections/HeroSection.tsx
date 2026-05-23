@@ -104,22 +104,22 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 90% at 18% 50%, rgba(8,6,4,0.85) 0%, rgba(8,6,4,0.55) 35%, rgba(8,6,4,0.2) 60%, rgba(8,6,4,0) 80%)",
+            "radial-gradient(ellipse 70% 100% at 18% 50%, rgba(8,6,4,0.9) 0%, rgba(8,6,4,0.75) 20%, rgba(8,6,4,0.5) 40%, rgba(8,6,4,0.25) 60%, rgba(8,6,4,0.08) 78%, rgba(8,6,4,0) 95%)",
         }}
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.75) 100%)",
+            "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.55) 95%, rgba(0,0,0,0.75) 100%)",
         }}
       />
 
       <div
-        className="absolute inset-0 mix-blend-screen opacity-50"
+        className="absolute inset-0 mix-blend-screen opacity-40"
         style={{
           background:
-            "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.28) 0%, transparent 55%)",
+            "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.35) 0%, rgba(201,154,88,0.15) 35%, transparent 65%)",
         }}
       />
 
