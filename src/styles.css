@@ -25,31 +25,28 @@
 }
 
 :root {
-  /* Royal Java palette — black, deep bronze, warm gold */
-  --background: oklch(0.08 0.012 50);
-  --foreground: oklch(0.88 0.045 80);
-
-  --gold: oklch(0.82 0.11 78);
-  --gold-soft: oklch(0.88 0.06 82);
-  --gold-deep: oklch(0.55 0.12 60);
-
-  --primary: var(--gold);
-  --primary-foreground: oklch(0.08 0.012 50);
-  --card: oklch(0.12 0.015 50);
-  --card-foreground: var(--foreground);
-  --muted: oklch(0.18 0.018 55);
-  --muted-foreground: oklch(0.72 0.05 75);
-  --border: oklch(0.82 0.11 78 / 0.22);
-  --ring: var(--gold);
+  --background: oklch(0.14 0.018 50);
+  --foreground: oklch(0.92 0.025 75);
+  --card: oklch(0.18 0.022 55);
+  --card-foreground: oklch(0.92 0.025 75);
+  --primary: oklch(0.78 0.12 75);
+  --primary-foreground: oklch(0.14 0.018 50);
+  --gold: oklch(0.78 0.12 75);
+  --gold-soft: oklch(0.85 0.09 80);
+  --gold-deep: oklch(0.55 0.13 60);
+  --muted: oklch(0.22 0.02 55);
+  --muted-foreground: oklch(0.72 0.04 75);
+  --border: oklch(0.78 0.12 75 / 0.25);
+  --ring: oklch(0.78 0.12 75);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.18 0.018 55);
-  --secondary-foreground: var(--foreground);
-  --accent: var(--gold);
-  --accent-foreground: var(--primary-foreground);
-  --popover: oklch(0.12 0.015 50);
-  --popover-foreground: var(--foreground);
-  --input: oklch(0.82 0.11 78 / 0.22);
+  --secondary: oklch(0.22 0.02 55);
+  --secondary-foreground: oklch(0.92 0.025 75);
+  --accent: oklch(0.78 0.12 75);
+  --accent-foreground: oklch(0.14 0.018 50);
+  --popover: oklch(0.18 0.022 55);
+  --popover-foreground: oklch(0.92 0.025 75);
+  --input: oklch(0.78 0.12 75 / 0.25);
   --radius: 0.5rem;
 
   --font-display: "Cinzel", "Times New Roman", serif;
@@ -57,19 +54,36 @@
   --font-script: "Great Vibes", cursive;
   --font-sans: "Cormorant Garamond", serif;
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.55 0.13 60), oklch(0.92 0.08 82), oklch(0.6 0.13 62));
+  --gradient-gold: linear-gradient(135deg, oklch(0.55 0.13 60), oklch(0.85 0.09 80), oklch(0.55 0.13 60));
+  --shadow-gold: 0 10px 40px -10px oklch(0.78 0.12 75 / 0.35);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   html, body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-serif);
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0.05em; }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
 }
 
 @layer utilities {
@@ -79,35 +93,99 @@
     background-clip: text;
     color: transparent;
   }
+  .border-gold {
+    border-color: oklch(0.78 0.12 75 / 0.4);
+  }
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--gold);
+  }
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: "";
+    height: 1px;
+    width: 3rem;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .fade-in {
+    animation: fadeIn 1.2s ease-out both;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 20px oklch(0.78 0.12 75 / 0.4)); }
+    50% { filter: drop-shadow(0 0 40px oklch(0.78 0.12 75 / 0.7)); }
+  }
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 
-  /* Floating golden particles */
-  .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  /* Gentle wind sway for foliage */
+  .sway {
+    transform-origin: top right;
+    animation: sway 6s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-1.5deg) translateX(0); }
+    50%      { transform: rotate(2deg) translateX(-3px); }
+  }
+
+  .cover-corner-top {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 18px oklch(0.78 0.12 75 / 0.45));
+  }
+
+  .cover-corner-bottom {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 22px oklch(0.78 0.12 75 / 0.4));
+  }
+
+  .cover-corner-bottom-left {
+    left: 0;
+    bottom: 0;
+  }
+
+  .cover-corner-bottom-right {
+    right: 0;
+    bottom: 0;
+  }
+
+  /* Floating light particles (sepoy-sepoy) */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
   .particles span {
     position: absolute;
     bottom: -10px;
+    width: 6px;
+    height: 6px;
     border-radius: 9999px;
-    background: radial-gradient(circle, oklch(0.95 0.12 82 / 0.95) 0%, oklch(0.82 0.11 78 / 0.4) 50%, transparent 70%);
-    filter: blur(0.4px) drop-shadow(0 0 6px oklch(0.88 0.13 82 / 0.7));
+    background: radial-gradient(circle, oklch(0.92 0.13 80 / 0.95) 0%, oklch(0.78 0.12 75 / 0.4) 50%, transparent 70%);
+    filter: blur(0.4px) drop-shadow(0 0 6px oklch(0.85 0.13 80 / 0.7));
     opacity: 0;
     animation: drift linear infinite;
   }
   @keyframes drift {
     0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
     10%  { opacity: 0.9; }
-    50%  { transform: translate(30px, -50vh) scale(1); opacity: 1; }
-    90%  { opacity: 0.6; }
-    100% { transform: translate(-20px, -100vh) scale(0.5); opacity: 0; }
-  }
-
-  .scroll-indicator { animation: scrollPulse 2.5s ease-in-out infinite; }
-  @keyframes scrollPulse {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(8px); }
-  }
-
-  .fade-in { animation: fadeIn 1.4s ease-out both; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
+    50%  { transform: translate(40px, -45vh) scale(1); opacity: 1; }
+    90%  { opacity: 0.7; }
+    100% { transform: translate(-30px, -100vh) scale(0.5); opacity: 0; }
   }
 }
+
