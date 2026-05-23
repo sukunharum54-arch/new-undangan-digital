@@ -376,28 +376,12 @@ function Invitation() {
               />
             </div>
 
-            {/* Warm base tone matching photo */}
+            {/* Left dark shading — feathered into photo */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(38,22,12,0.25) 0%, rgba(38,22,12,0.05) 45%, rgba(20,12,6,0.35) 100%)",
-              }}
-            />
-            {/* Left soft sepia shading — feathered into photo */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 75% 85% at 16% 45%, rgba(28,18,10,0.78) 0%, rgba(34,20,12,0.5) 38%, rgba(46,28,16,0.18) 62%, rgba(60,36,20,0) 82%)",
-              }}
-            />
-            {/* Bottom blend — warm fade so text base melts into photo */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-[55%]"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(40,24,14,0) 0%, rgba(40,24,14,0.25) 55%, rgba(28,18,10,0.55) 100%)",
+                  "radial-gradient(ellipse 70% 90% at 18% 50%, rgba(8,6,4,0.85) 0%, rgba(8,6,4,0.55) 35%, rgba(8,6,4,0.2) 60%, rgba(8,6,4,0) 80%)",
               }}
             />
             {/* Vignette */}
@@ -405,7 +389,7 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, transparent 58%, rgba(20,12,6,0.4) 92%, rgba(10,6,3,0.7) 100%)",
+                  "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.75) 100%)",
               }}
             />
 
