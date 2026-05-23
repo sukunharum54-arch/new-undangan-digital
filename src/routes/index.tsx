@@ -369,9 +369,9 @@ function Invitation() {
                 className="h-full w-full object-cover object-center"
                 style={{
                   maskImage:
-                    "radial-gradient(ellipse 78% 85% at 62% 50%, #000 62%, transparent 100%)",
+                    "radial-gradient(ellipse 95% 100% at 62% 50%, #000 80%, transparent 100%)",
                   WebkitMaskImage:
-                    "radial-gradient(ellipse 78% 85% at 62% 50%, #000 62%, transparent 100%)",
+                    "radial-gradient(ellipse 95% 100% at 62% 50%, #000 80%, transparent 100%)",
                 }}
               />
             </div>
@@ -381,7 +381,7 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(13,8,6,0.55) 0%, rgba(13,8,6,0.2) 35%, rgba(13,8,6,0.55) 100%)",
+                  "linear-gradient(180deg, rgba(13,8,6,0.35) 0%, rgba(13,8,6,0.1) 35%, rgba(13,8,6,0.4) 100%)",
               }}
             />
             {/* Left darkening for text */}
@@ -389,7 +389,7 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.75) 28%, rgba(5,5,5,0.2) 52%, rgba(5,5,5,0) 72%)",
+                  "linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 28%, rgba(5,5,5,0.15) 50%, rgba(5,5,5,0) 68%)",
               }}
             />
             {/* Vignette */}
@@ -397,31 +397,18 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 92%, rgba(0,0,0,0.85) 100%)",
+                  "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 92%, rgba(0,0,0,0.8) 100%)",
               }}
             />
             {/* Golden glow upper right */}
             <div
-              className="absolute inset-0 mix-blend-screen opacity-60"
+              className="absolute inset-0 mix-blend-screen opacity-50"
               style={{
                 background:
-                  "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.32) 0%, transparent 55%)",
+                  "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.28) 0%, transparent 55%)",
               }}
             />
 
-            {/* Corner filigree */}
-            <img
-              src={cornerFiligreeClean}
-              alt=""
-              aria-hidden
-              className="pointer-events-none absolute left-0 top-0 z-10 w-[28%] max-w-[260px] select-none opacity-30"
-            />
-            <img
-              src={cornerFiligreeClean}
-              alt=""
-              aria-hidden
-              className="pointer-events-none absolute right-0 top-0 z-10 w-[28%] max-w-[260px] -scale-x-100 select-none opacity-30"
-            />
 
             {/* Floating golden particles */}
             <div className="particles z-10" aria-hidden>
