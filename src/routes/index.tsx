@@ -351,22 +351,144 @@ function Invitation() {
           </section>
 
           {/* ============ HERO ============ */}
-          <Section
-            bg={bgHero}
-            sectionRef={sectionRefs.hero}
-            label="Hero"
-            overlay="bg-gradient-to-b from-black/80 via-black/55 to-black/40 md:bg-gradient-to-r md:from-black/85 md:via-black/50 md:to-black/30"
+          <section
+            ref={sectionRefs.hero}
+            aria-label="Hero"
+            className="relative w-full min-h-screen overflow-hidden"
+            style={{
+              backgroundImage: `url(${bgHero})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            <div className="grid md:grid-cols-2 gap-8 items-center min-h-screen px-6 sm:px-12 py-16 sm:py-20">
-              <div className="text-center md:text-left fade-in order-2 md:order-1">
-                <h2 className="text-4xl sm:text-6xl font-display text-gradient-gold leading-tight">
+            {/* Couple photo blended into background — right side */}
+            <div className="pointer-events-none absolute inset-0 md:left-[35%]">
+              <img
+                src={heroCouple}
+                alt="Aruna & Sasmita"
+                className="h-full w-full object-cover object-center"
+                style={{
+                  maskImage:
+                    "radial-gradient(ellipse 78% 85% at 62% 50%, #000 62%, transparent 100%)",
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 78% 85% at 62% 50%, #000 62%, transparent 100%)",
+                }}
+              />
+            </div>
+
+            {/* Warm base tone */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(13,8,6,0.55) 0%, rgba(13,8,6,0.2) 35%, rgba(13,8,6,0.55) 100%)",
+              }}
+            />
+            {/* Left darkening for text */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.75) 28%, rgba(5,5,5,0.2) 52%, rgba(5,5,5,0) 72%)",
+              }}
+            />
+            {/* Vignette */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.55) 92%, rgba(0,0,0,0.85) 100%)",
+              }}
+            />
+            {/* Golden glow upper right */}
+            <div
+              className="absolute inset-0 mix-blend-screen opacity-60"
+              style={{
+                background:
+                  "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.32) 0%, transparent 55%)",
+              }}
+            />
+
+            {/* Corner filigree */}
+            <img
+              src={cornerFiligreeClean}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute left-0 top-0 z-10 w-[28%] max-w-[260px] select-none opacity-30"
+            />
+            <img
+              src={cornerFiligreeClean}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute right-0 top-0 z-10 w-[28%] max-w-[260px] -scale-x-100 select-none opacity-30"
+            />
+
+            {/* Floating golden particles */}
+            <div className="particles z-10" aria-hidden>
+              {Array.from({ length: 24 }).map((_, i) => {
+                const left = (i * 4.1 + 3) % 100;
+                const delay = (i % 8) * 1.3;
+                const dur = 10 + (i % 6) * 1.6;
+                const size = 2 + (i % 4) * 1.5;
+                return (
+                  <span
+                    key={i}
+                    style={{
+                      left: `${left}%`,
+                      width: `${size}px`,
+                      height: `${size}px`,
+                      animationDelay: `${delay}s`,
+                      animationDuration: `${dur}s`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {/* CONTENT */}
+            <div className="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[40%_60%]">
+              <div className="fade-in flex flex-col items-center justify-center px-6 pt-[16vh] pb-24 text-center md:items-start md:pt-0 md:pl-[clamp(2rem,5vw,5rem)] md:pr-6 md:text-left">
+                <h2
+                  className="font-display leading-[0.95] tracking-[0.08em]"
+                  style={{
+                    color: "#E8D3B0",
+                    fontSize: "clamp(2.75rem, 6vw, 5rem)",
+                    textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+                  }}
+                >
                   ARUNA
                 </h2>
-                <span className="block my-2 text-3xl font-script text-gold">&amp;</span>
-                <h2 className="text-4xl sm:text-6xl font-display text-gradient-gold leading-tight">
+                <span
+                  className="my-1 font-display italic"
+                  style={{
+                    color: "#E8D3B0",
+                    fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                    textShadow: "0 2px 14px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  &amp;
+                </span>
+                <h2
+                  className="font-display leading-[0.95] tracking-[0.08em]"
+                  style={{
+                    color: "#E8D3B0",
+                    fontSize: "clamp(2.75rem, 6vw, 5rem)",
+                    textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+                  }}
+                >
                   SASMITA
                 </h2>
-                <p className="mt-8 text-base sm:text-lg italic font-serif text-foreground/90 max-w-sm mx-auto md:mx-0">
+
+                <p
+                  className="mt-8 font-serif italic"
+                  style={{
+                    color: "rgba(232,211,176,0.88)",
+                    fontSize: "clamp(0.95rem, 1.25vw, 1.15rem)",
+                    lineHeight: 1.8,
+                    maxWidth: "32ch",
+                    textShadow: "0 2px 10px rgba(0,0,0,0.7)",
+                  }}
+                >
                   Dua jiwa, satu tujuan,
                   <br />
                   dalam harmoni cinta dan doa,
@@ -375,22 +497,47 @@ function Invitation() {
                   <br />
                   untuk selamanya.
                 </p>
+
                 <Divider className="mt-8 md:justify-start" />
-                <p className="mt-6 text-sm tracking-[0.4em] text-gold-soft font-display">
-                  20 · 12 · 2025
+
+                <p
+                  className="mt-8 font-display"
+                  style={{
+                    color: "#E8D3B0",
+                    letterSpacing: "0.45em",
+                    fontSize: "clamp(0.85rem, 1vw, 1rem)",
+                  }}
+                >
+                  20 • 12 • 2025
                 </p>
-                <p className="mt-2 text-xs tracking-[0.35em] text-gold/70 font-display uppercase">
+                <p
+                  className="mt-3 font-display uppercase"
+                  style={{
+                    color: "rgba(232,211,176,0.75)",
+                    letterSpacing: "0.55em",
+                    fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)",
+                  }}
+                >
                   Yogyakarta
                 </p>
               </div>
-              <div className="relative mx-auto w-full max-w-xs sm:max-w-sm order-1 md:order-2">
-                <div className="absolute -inset-3 bg-gradient-to-br from-gold/40 to-transparent blur-2xl" />
-                <div className="relative rounded-sm overflow-hidden border border-gold/40 shadow-[0_25px_70px_-20px_oklch(0.78_0.12_75/0.4)]">
-                  <img src={heroCouple} alt="Aruna & Sasmita" className="w-full h-auto object-cover" />
-                </div>
-              </div>
+              <div aria-hidden />
             </div>
-          </Section>
+
+            {/* Scroll indicator */}
+            <button
+              aria-label="Scroll down"
+              onClick={() =>
+                sectionRefs.philosophy.current?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full border border-gold/60 p-2 backdrop-blur-sm transition-colors hover:bg-gold/10"
+            >
+              <ChevronDown className="w-4 h-4 text-gold animate-bounce" />
+            </button>
+          </section>
+
 
           {/* ============ PHILOSOPHY ============ */}
           <Section
