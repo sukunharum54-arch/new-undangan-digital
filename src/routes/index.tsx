@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Invitation() {
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(true);
   const [galleryIdx, setGalleryIdx] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -50,33 +50,31 @@ function Invitation() {
         onOpen={() => setOpened(true)}
       />
 
-      {opened && (
-        <div ref={contentRef}>
-          <GununganSection sectionRef={sectionRefs.gunungan} />
+      <div ref={contentRef}>
+        <GununganSection sectionRef={sectionRefs.gunungan} />
 
-          <HeroSection
-            sectionRef={sectionRefs.hero}
-            onScrollToPhilosophy={() =>
-              sectionRefs.philosophy.current?.scrollIntoView({ behavior: "smooth" })
-            }
-          />
+        <HeroSection
+          sectionRef={sectionRefs.hero}
+          onScrollToPhilosophy={() =>
+            sectionRefs.philosophy.current?.scrollIntoView({ behavior: "smooth" })
+          }
+        />
 
-          <PhilosophySection sectionRef={sectionRefs.philosophy} />
+        <PhilosophySection sectionRef={sectionRefs.philosophy} />
 
-          <EventSection sectionRef={sectionRefs.event} />
+        <EventSection sectionRef={sectionRefs.event} />
 
-          <GallerySection
-            sectionRef={sectionRefs.gallery}
-            galleryIdx={galleryIdx}
-            onPrev={() => setGalleryIdx((i) => (i - 1 + 6) % 6)}
-            onNext={() => setGalleryIdx((i) => (i + 1) % 6)}
-          />
+        <GallerySection
+          sectionRef={sectionRefs.gallery}
+          galleryIdx={galleryIdx}
+          onPrev={() => setGalleryIdx((i) => (i - 1 + 6) % 6)}
+          onNext={() => setGalleryIdx((i) => (i + 1) % 6)}
+        />
 
-          <ClosingSection sectionRef={sectionRefs.closing} />
-        </div>
-      )}
+        <ClosingSection sectionRef={sectionRefs.closing} />
+      </div>
 
-      {opened && <FloatingNav sectionRefs={sectionRefs} />}
+      <FloatingNav sectionRefs={sectionRefs} />
     </main>
   );
 }
