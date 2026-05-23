@@ -16,7 +16,7 @@ export function CoverSection({ sectionRef, opened, onOpen }: CoverSectionProps) 
     <section
       ref={sectionRef}
       aria-label="Cover"
-      className="relative w-full h-screen bg-background"
+      className="relative w-full h-screen bg-background overflow-visible"
     >
       <div
         className="absolute inset-0 sm:hidden"
@@ -39,9 +39,9 @@ export function CoverSection({ sectionRef, opened, onOpen }: CoverSectionProps) 
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_transparent_0%,_rgba(0,0,0,0.15)_60%,_rgba(0,0,0,0.5)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/75" />
 
-      <img src={foliageCorner} alt="" aria-hidden className="cover-corner-top sway absolute top-2 right-2 sm:top-4 sm:right-4 w-[26%] sm:w-[18%] h-auto pointer-events-none select-none origin-top-right" />
-      <img src={cornerOrnament} alt="" aria-hidden className="cover-corner-bottom cover-corner-bottom-left absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-[22%] sm:w-[16%] h-auto pointer-events-none select-none -scale-y-100" />
-      <img src={cornerOrnament} alt="" aria-hidden className="cover-corner-bottom cover-corner-bottom-right absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-[22%] sm:w-[16%] h-auto pointer-events-none select-none -scale-x-100 -scale-y-100" />
+      <img src={foliageCorner} alt="" aria-hidden className="cover-corner-top sway fixed -top-8 -right-8 sm:-top-12 sm:-right-12 w-80 sm:w-96 h-auto pointer-events-none select-none origin-top-right z-40" />
+      <img src={cornerOrnament} alt="" aria-hidden className="cover-corner-bottom cover-corner-bottom-left fixed -bottom-8 -left-8 sm:-bottom-12 sm:-left-12 w-72 sm:w-80 h-auto pointer-events-none select-none -scale-y-100 z-40" />
+      <img src={cornerOrnament} alt="" aria-hidden className="cover-corner-bottom cover-corner-bottom-right fixed -bottom-8 -right-8 sm:-bottom-12 sm:-right-12 w-72 sm:w-80 h-auto pointer-events-none select-none -scale-x-100 -scale-y-100 z-40" />
 
       <GoldenParticles count={24} />
 
