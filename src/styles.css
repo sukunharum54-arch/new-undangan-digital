@@ -187,5 +187,11 @@
     90%  { opacity: 0.7; }
     100% { transform: translate(-30px, -100vh) scale(0.5); opacity: 0; }
   }
+
+  @keyframes bokehFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, -16px) scale(1.08); }
+  }
 }
+
 

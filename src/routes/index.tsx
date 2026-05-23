@@ -419,6 +419,56 @@ function Invitation() {
               }}
             />
 
+            {/* Golden bokeh — spans full hero for visual cohesion */}
+            <div className="pointer-events-none absolute inset-0 z-10 mix-blend-screen" aria-hidden>
+              {Array.from({ length: 14 }).map((_, i) => {
+                const positions = [
+                  { l: 8, t: 18, s: 120, o: 0.18 },
+                  { l: 22, t: 62, s: 90, o: 0.14 },
+                  { l: 34, t: 30, s: 70, o: 0.22 },
+                  { l: 14, t: 80, s: 140, o: 0.12 },
+                  { l: 45, t: 50, s: 60, o: 0.2 },
+                  { l: 55, t: 18, s: 110, o: 0.18 },
+                  { l: 62, t: 70, s: 95, o: 0.16 },
+                  { l: 72, t: 38, s: 80, o: 0.22 },
+                  { l: 82, t: 60, s: 130, o: 0.14 },
+                  { l: 90, t: 25, s: 70, o: 0.2 },
+                  { l: 28, t: 12, s: 55, o: 0.24 },
+                  { l: 48, t: 82, s: 100, o: 0.15 },
+                  { l: 68, t: 14, s: 65, o: 0.22 },
+                  { l: 88, t: 78, s: 85, o: 0.16 },
+                ];
+                const p = positions[i];
+                return (
+                  <span
+                    key={i}
+                    className="absolute rounded-full"
+                    style={{
+                      left: `${p.l}%`,
+                      top: `${p.t}%`,
+                      width: `${p.s}px`,
+                      height: `${p.s}px`,
+                      background:
+                        "radial-gradient(circle, rgba(232,196,128,0.85) 0%, rgba(201,154,88,0.45) 35%, rgba(201,154,88,0) 70%)",
+                      opacity: p.o,
+                      filter: "blur(6px)",
+                      animation: `bokehFloat ${14 + (i % 5) * 2}s ease-in-out ${i * 0.7}s infinite alternate`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Film grain — unifies entire hero */}
+            <div
+              className="pointer-events-none absolute inset-0 z-[11] opacity-[0.18] mix-blend-overlay"
+              aria-hidden
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.82  0 0 0 0 0.55  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+                backgroundSize: "240px 240px",
+              }}
+            />
 
             {/* Floating golden particles */}
             <div className="particles z-10" aria-hidden>
@@ -441,6 +491,7 @@ function Invitation() {
                 );
               })}
             </div>
+
 
             {/* CONTENT */}
             <div className="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[40%_60%]">
