@@ -381,15 +381,15 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(13,8,6,0.35) 0%, rgba(13,8,6,0.1) 35%, rgba(13,8,6,0.4) 100%)",
+                  "linear-gradient(180deg, rgba(13,8,6,0.3) 0%, rgba(13,8,6,0.05) 40%, rgba(13,8,6,0.45) 100%)",
               }}
             />
-            {/* Left darkening for text */}
+            {/* Left soft shading for text — feathered into photo */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 28%, rgba(5,5,5,0.15) 50%, rgba(5,5,5,0) 68%)",
+                  "radial-gradient(ellipse 70% 90% at 18% 50%, rgba(8,6,4,0.85) 0%, rgba(8,6,4,0.55) 35%, rgba(8,6,4,0.2) 60%, rgba(8,6,4,0) 80%)",
               }}
             />
             {/* Vignette */}
@@ -397,9 +397,10 @@ function Invitation() {
               className="absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 92%, rgba(0,0,0,0.8) 100%)",
+                  "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.75) 100%)",
               }}
             />
+
             {/* Golden glow upper right */}
             <div
               className="absolute inset-0 mix-blend-screen opacity-50"
