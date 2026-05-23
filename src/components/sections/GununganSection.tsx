@@ -37,7 +37,7 @@ export function GununganSection({ sectionRef }: GununganSectionProps) {
     <section
       ref={sectionRef}
       aria-label="Gunungan"
-      className="relative w-full h-screen overflow-hidden bg-background -mt-px"
+      className="relative w-full h-screen bg-background -mt-px"
     >
       <div
         className="absolute inset-0 bg-cover bg-center md:hidden"
@@ -55,12 +55,12 @@ export function GununganSection({ sectionRef }: GununganSectionProps) {
       <GununganParticles />
 
       <div className="relative z-10 flex flex-col items-center justify-end text-center h-full px-6 pt-10 sm:pt-16 pb-10 sm:pb-14">
-        <p className="text-base sm:text-xl italic font-serif text-gold-soft max-w-md leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
+        <p data-reveal="zoom-pan" data-reveal-delay="0" className="text-base sm:text-xl italic font-serif text-gold-soft max-w-md leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
           Sebuah perjalanan suci
           <br />
           menuju ikatan yang diridhai
         </p>
-        <Divider className="mt-7" />
+        <Divider data-reveal="curtain" data-reveal-delay="300" className="mt-7" />
         <ChevronDown className="mt-6 w-5 h-5 text-gold animate-bounce" />
       </div>
     </section>

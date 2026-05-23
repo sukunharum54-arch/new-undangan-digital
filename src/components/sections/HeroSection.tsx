@@ -82,20 +82,25 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
     <section
       ref={sectionRef}
       aria-label="Hero"
-      className="relative w-full min-h-screen overflow-hidden"
-      style={{
-        backgroundImage: `url(${bgHero})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative w-full min-h-screen"
     >
+      {/* Full-bleed background image — uses contain + object-fit to avoid cropping on any device */}
+      <div className="absolute inset-0">
+        <img
+          src={bgHero}
+          alt=""
+          aria-hidden
+          className="h-full w-full object-cover object-center sm:object-[center_30%]"
+        />
+      </div>
+
       {/* Couple photo — mask uses a wide soft linear feather on the left edge
           so it blends seamlessly into the text overlay rather than cutting hard */}
       <div className="pointer-events-none absolute inset-0 md:left-[30%]">
         <img
           src={heroCouple}
           alt="Aruna & Sasmita"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-[center_20%] sm:object-center"
           style={{
             maskImage:
               "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 8%, rgba(0,0,0,0.55) 18%, rgba(0,0,0,0.88) 32%, #000 52%, #000 100%)",
@@ -105,48 +110,29 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
         />
       </div>
 
-      {/* Left-side text backdrop — warm dark brown pulled from the photo's shadow tones
-          rather than pure black, so the text area feels part of the same scene */}
+      {/* Left-side text backdrop */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, rgba(14,10,6,0.96) 0%, rgba(14,10,6,0.88) 16%, rgba(14,10,6,0.68) 28%, rgba(14,10,6,0.38) 42%, rgba(14,10,6,0.12) 58%, rgba(14,10,6,0) 72%)",
+            "linear-gradient(to right, rgba(10,8,5,0.94) 0%, rgba(10,8,5,0.85) 16%, rgba(10,8,5,0.60) 28%, rgba(10,8,5,0.30) 42%, rgba(10,8,5,0.08) 58%, rgba(10,8,5,0) 72%)",
         }}
       />
 
-      {/* Soft warm colour tint that bleeds across the full width — ties left and right together */}
+      {/* Subtle bottom vignette */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 130% 80% at 50% 100%, rgba(30,18,8,0.55) 0%, transparent 65%)",
-        }}
-      />
-
-      {/* Subtle warm glow reaching from the photo side toward the text */}
-      <div
-        className="absolute inset-0 mix-blend-screen"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 70% at 72% 38%, rgba(201,154,88,0.18) 0%, rgba(180,130,65,0.08) 45%, transparent 70%)",
-        }}
-      />
-
-      {/* Second golden wash at the centre seam to smooth the transition zone */}
-      <div
-        className="absolute inset-0 mix-blend-screen"
-        style={{
-          background:
-            "radial-gradient(ellipse 30% 90% at 44% 50%, rgba(180,130,60,0.10) 0%, transparent 80%)",
+            "radial-gradient(ellipse 130% 80% at 50% 100%, rgba(10,8,5,0.40) 0%, transparent 65%)",
         }}
       />
 
       <HeroBokeh />
 
-      {/* Film grain — same layer covers the entire frame including the photo */}
+      {/* Film grain — reduced opacity for less sepia wash */}
       <div
-        className="pointer-events-none absolute inset-0 z-[11] opacity-[0.22] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 z-[11] opacity-[0.08] mix-blend-overlay"
         aria-hidden
         style={{
           backgroundImage:
@@ -158,8 +144,9 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
       <HeroParticles />
 
       <div className="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[42%_58%]">
-        <div className="fade-in flex flex-col items-center justify-center px-6 pt-[16vh] pb-24 text-center md:items-start md:pt-0 md:pl-[clamp(2rem,5vw,5rem)] md:pr-8 md:text-left">
+        <div className="flex flex-col items-center justify-center px-6 pt-[16vh] pb-24 text-center md:items-start md:pt-0 md:pl-[clamp(2rem,5vw,5rem)] md:pr-8 md:text-left">
           <h2
+            data-reveal="slide-reveal" data-reveal-delay="0"
             className="font-display leading-[0.95] tracking-[0.08em]"
             style={{
               color: "#EAD8B8",
@@ -170,6 +157,7 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
             ARUNA
           </h2>
           <span
+            data-reveal="fade-up" data-reveal-delay="200"
             className="my-1 font-display italic"
             style={{
               color: "#EAD8B8",
@@ -180,6 +168,7 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
             &amp;
           </span>
           <h2
+            data-reveal="slide-reveal" data-reveal-delay="300"
             className="font-display leading-[0.95] tracking-[0.08em]"
             style={{
               color: "#EAD8B8",
@@ -191,6 +180,7 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           </h2>
 
           <p
+            data-reveal="fade-up" data-reveal-delay="500"
             className="mt-8 font-serif italic"
             style={{
               color: "rgba(230,208,168,0.82)",
@@ -209,9 +199,10 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
             untuk selamanya.
           </p>
 
-          <Divider className="mt-8 md:justify-start" />
+          <Divider data-reveal="curtain" data-reveal-delay="700" className="mt-8 md:justify-start" />
 
           <p
+            data-reveal="fade-up" data-reveal-delay="900"
             className="mt-8 font-display"
             style={{
               color: "#EAD8B8",
@@ -223,6 +214,7 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
             20 - 12 - 2025
           </p>
           <p
+            data-reveal="fade-up" data-reveal-delay="1000"
             className="mt-3 font-display uppercase"
             style={{
               color: "rgba(230,208,168,0.7)",

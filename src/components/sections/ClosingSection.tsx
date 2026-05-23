@@ -22,18 +22,18 @@ export function ClosingSection({ sectionRef }: ClosingSectionProps) {
       overlay="bg-black/65"
     >
       <div className="flex flex-col items-center text-center min-h-screen px-6 py-20">
-        <Lotus className="w-10 h-10 text-gold" />
-        <p className="mt-4 text-xs tracking-[0.5em] font-display text-gold-soft uppercase">
+        <Lotus data-reveal="fade-scale" data-reveal-delay="0" className="w-10 h-10 text-gold" />
+        <p data-reveal="fade-up" data-reveal-delay="150" className="mt-4 text-xs tracking-[0.5em] font-display text-gold-soft uppercase">
           Terima Kasih
         </p>
-        <h2 className="mt-3 text-4xl sm:text-5xl font-display text-gradient-gold">
+        <h2 data-reveal="fade-up" data-reveal-delay="300" className="mt-3 text-4xl sm:text-5xl font-display text-gradient-gold">
           Atas Doa &amp; Restu
         </h2>
-        <h2 className="text-4xl sm:text-5xl font-display text-gradient-gold">
+        <h2 data-reveal="fade-up" data-reveal-delay="400" className="text-4xl sm:text-5xl font-display text-gradient-gold">
           yang Diberikan
         </h2>
-        <Divider className="mt-6" />
-        <p className="mt-6 max-w-xl text-base italic font-serif text-foreground/85 leading-relaxed">
+        <Divider data-reveal="curtain" data-reveal-delay="500" className="mt-6" />
+        <p data-reveal="fade-up" data-reveal-delay="600" className="mt-6 max-w-xl text-base italic font-serif text-foreground/85 leading-relaxed">
           Merupakan kebahagiaan bagi kami
           <br />
           apabila Bapak/Ibu/Saudara/i berkenan hadir
@@ -42,7 +42,7 @@ export function ClosingSection({ sectionRef }: ClosingSectionProps) {
           <br />
           Kami yang berbahagia,
         </p>
-        <p className="mt-6 text-3xl sm:text-4xl font-script text-gradient-gold">
+        <p data-reveal="zoom-pan" data-reveal-delay="800" className="mt-6 text-3xl sm:text-4xl font-script text-gradient-gold">
           Aruna &amp; Sasmita
         </p>
 

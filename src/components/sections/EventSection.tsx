@@ -44,16 +44,17 @@ export function EventSection({ sectionRef }: EventSectionProps) {
       overlay="bg-black/75"
     >
       <div className="flex flex-col items-center text-center min-h-screen px-6 py-20">
-        <Divider />
-        <h2 className="mt-6 text-3xl sm:text-4xl font-display text-gradient-gold tracking-[0.3em]">
+        <Divider data-reveal="curtain" data-reveal-delay="0" />
+        <h2 data-reveal="fade-up" data-reveal-delay="200" className="mt-6 text-3xl sm:text-4xl font-display text-gradient-gold tracking-[0.3em]">
           WAKTU &amp; TEMPAT
         </h2>
-        <Divider className="mt-4" />
+        <Divider data-reveal="curtain" data-reveal-delay="350" className="mt-4" />
 
         <div className="mt-12 grid md:grid-cols-3 gap-6 w-full max-w-5xl">
-          {events.map((e) => (
+          {events.map((e, i) => (
             <div
               key={e.title}
+              data-reveal="fade-scale" data-reveal-delay={String(500 + i * 200)}
               className="relative rounded-md border border-gold/40 bg-black/40 backdrop-blur-sm p-8 shadow-[0_10px_40px_-15px_oklch(0.78_0.12_75/0.3)]"
             >
               <div className="flex justify-center">{e.icon}</div>

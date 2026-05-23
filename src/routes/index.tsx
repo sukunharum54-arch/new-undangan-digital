@@ -8,6 +8,7 @@ import { EventSection } from "@/components/sections/EventSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { ClosingSection } from "@/components/sections/ClosingSection";
 import { FloatingNav } from "@/components/FloatingNav";
+import { useCinematicSection } from "@/hooks/use-cinematic-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +26,7 @@ function Invitation() {
   const [opened, setOpened] = useState(true);
   const [galleryIdx, setGalleryIdx] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
+  const cinematicRef = useCinematicSection();
 
   const sectionRefs = {
     cover: useRef<HTMLElement>(null),
@@ -43,7 +45,7 @@ function Invitation() {
   }, [opened]);
 
   return (
-    <main className="bg-background text-foreground overflow-x-hidden">
+    <main ref={cinematicRef} className="bg-background text-foreground overflow-x-hidden">
       <CoverSection
         sectionRef={sectionRefs.cover}
         opened={opened}

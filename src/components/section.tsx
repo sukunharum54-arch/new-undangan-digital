@@ -21,7 +21,7 @@ export function Section({
     <section
       ref={sectionRef}
       aria-label={label}
-      className={`relative w-full ${minH} overflow-hidden`}
+      className={`relative w-full ${minH}`}
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",

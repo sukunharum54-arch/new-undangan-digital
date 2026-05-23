@@ -56,6 +56,7 @@
 
   --gradient-gold: linear-gradient(135deg, oklch(0.55 0.13 60), oklch(0.85 0.09 80), oklch(0.55 0.13 60));
   --shadow-gold: 0 10px 40px -10px oklch(0.78 0.12 75 / 0.35);
+  --cinematic-duration: 1200ms;
 }
 
 @layer base {
@@ -191,6 +192,75 @@
   @keyframes bokehFloat {
     0%   { transform: translate(0, 0) scale(1); }
     100% { transform: translate(20px, -16px) scale(1.08); }
+  }
+
+  /* ── Cinematic luxury scroll transitions ── */
+
+  .cinematic-init-fade-up {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+    filter: blur(4px);
+    transition: opacity var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                transform var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                filter var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cinematic-active-fade-up {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .cinematic-init-fade-scale {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(6px);
+    transition: opacity var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                transform var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                filter var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cinematic-active-fade-scale {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  .cinematic-init-curtain {
+    opacity: 0;
+    clip-path: inset(0 50% 0 50%);
+    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+                clip-path var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cinematic-active-curtain {
+    opacity: 1;
+    clip-path: inset(0 0% 0 0%);
+  }
+
+  .cinematic-init-slide-reveal {
+    opacity: 0;
+    transform: translateX(-80px);
+    filter: blur(4px);
+    transition: opacity var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                transform var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                filter var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cinematic-active-slide-reveal {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+
+  .cinematic-init-zoom-pan {
+    opacity: 0;
+    transform: scale(1.15) translateY(30px);
+    filter: blur(3px);
+    transition: opacity var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                transform var(--cinematic-duration) cubic-bezier(0.22, 1, 0.36, 1),
+                filter 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cinematic-active-zoom-pan {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
   }
 }
 
