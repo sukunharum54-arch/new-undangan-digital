@@ -8,22 +8,25 @@ interface HeroSectionProps {
   onScrollToPhilosophy: () => void;
 }
 
+// Bokeh spread evenly across the full width so left-text and right-photo feel unified
 function HeroBokeh() {
   const positions = [
-    { l: 8, t: 18, s: 120, o: 0.18 },
-    { l: 22, t: 62, s: 90, o: 0.14 },
-    { l: 34, t: 30, s: 70, o: 0.22 },
-    { l: 14, t: 80, s: 140, o: 0.12 },
-    { l: 45, t: 50, s: 60, o: 0.2 },
-    { l: 55, t: 18, s: 110, o: 0.18 },
-    { l: 62, t: 70, s: 95, o: 0.16 },
-    { l: 72, t: 38, s: 80, o: 0.22 },
-    { l: 82, t: 60, s: 130, o: 0.14 },
-    { l: 90, t: 25, s: 70, o: 0.2 },
-    { l: 28, t: 12, s: 55, o: 0.24 },
-    { l: 48, t: 82, s: 100, o: 0.15 },
-    { l: 68, t: 14, s: 65, o: 0.22 },
-    { l: 88, t: 78, s: 85, o: 0.16 },
+    { l: 5,  t: 20, s: 110, o: 0.13 },
+    { l: 15, t: 65, s: 85,  o: 0.11 },
+    { l: 25, t: 35, s: 65,  o: 0.17 },
+    { l: 10, t: 82, s: 130, o: 0.09 },
+    { l: 38, t: 52, s: 55,  o: 0.15 },
+    { l: 48, t: 15, s: 100, o: 0.13 },
+    { l: 55, t: 72, s: 90,  o: 0.12 },
+    { l: 64, t: 40, s: 75,  o: 0.16 },
+    { l: 74, t: 62, s: 120, o: 0.11 },
+    { l: 84, t: 28, s: 65,  o: 0.15 },
+    { l: 30, t: 10, s: 50,  o: 0.18 },
+    { l: 50, t: 85, s: 95,  o: 0.12 },
+    { l: 70, t: 16, s: 60,  o: 0.17 },
+    { l: 90, t: 75, s: 80,  o: 0.13 },
+    { l: 42, t: 44, s: 70,  o: 0.14 },
+    { l: 78, t: 50, s: 105, o: 0.10 },
   ];
 
   return (
@@ -38,10 +41,10 @@ function HeroBokeh() {
             width: `${p.s}px`,
             height: `${p.s}px`,
             background:
-              "radial-gradient(circle, rgba(232,196,128,0.85) 0%, rgba(201,154,88,0.45) 35%, rgba(201,154,88,0) 70%)",
+              "radial-gradient(circle, rgba(232,196,128,0.8) 0%, rgba(201,154,88,0.35) 40%, rgba(201,154,88,0) 72%)",
             opacity: p.o,
-            filter: "blur(6px)",
-            animation: `bokehFloat ${14 + (i % 5) * 2}s ease-in-out ${i * 0.7}s infinite alternate`,
+            filter: "blur(8px)",
+            animation: `bokehFloat ${15 + (i % 5) * 2}s ease-in-out ${i * 0.65}s infinite alternate`,
           }}
         />
       ))}
@@ -86,65 +89,82 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
         backgroundPosition: "center",
       }}
     >
-      <div className="pointer-events-none absolute inset-0 md:left-[35%]">
+      {/* Couple photo — mask uses a wide soft linear feather on the left edge
+          so it blends seamlessly into the text overlay rather than cutting hard */}
+      <div className="pointer-events-none absolute inset-0 md:left-[30%]">
         <img
           src={heroCouple}
           alt="Aruna & Sasmita"
           className="h-full w-full object-cover object-center"
           style={{
             maskImage:
-              "radial-gradient(ellipse 95% 100% at 62% 50%, #000 80%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 8%, rgba(0,0,0,0.55) 18%, rgba(0,0,0,0.88) 32%, #000 52%, #000 100%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 95% 100% at 62% 50%, #000 80%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 8%, rgba(0,0,0,0.55) 18%, rgba(0,0,0,0.88) 32%, #000 52%, #000 100%)",
           }}
         />
       </div>
 
+      {/* Left-side text backdrop — warm dark brown pulled from the photo's shadow tones
+          rather than pure black, so the text area feels part of the same scene */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 100% at 18% 50%, rgba(8,6,4,0.9) 0%, rgba(8,6,4,0.75) 20%, rgba(8,6,4,0.5) 40%, rgba(8,6,4,0.25) 60%, rgba(8,6,4,0.08) 78%, rgba(8,6,4,0) 95%)",
-        }}
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.35) 85%, rgba(0,0,0,0.55) 95%, rgba(0,0,0,0.75) 100%)",
+            "linear-gradient(to right, rgba(14,10,6,0.96) 0%, rgba(14,10,6,0.88) 16%, rgba(14,10,6,0.68) 28%, rgba(14,10,6,0.38) 42%, rgba(14,10,6,0.12) 58%, rgba(14,10,6,0) 72%)",
         }}
       />
 
+      {/* Soft warm colour tint that bleeds across the full width — ties left and right together */}
       <div
-        className="absolute inset-0 mix-blend-screen opacity-40"
+        className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 75% 22%, rgba(201,154,88,0.35) 0%, rgba(201,154,88,0.15) 35%, transparent 65%)",
+            "radial-gradient(ellipse 130% 80% at 50% 100%, rgba(30,18,8,0.55) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Subtle warm glow reaching from the photo side toward the text */}
+      <div
+        className="absolute inset-0 mix-blend-screen"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 70% at 72% 38%, rgba(201,154,88,0.18) 0%, rgba(180,130,65,0.08) 45%, transparent 70%)",
+        }}
+      />
+
+      {/* Second golden wash at the centre seam to smooth the transition zone */}
+      <div
+        className="absolute inset-0 mix-blend-screen"
+        style={{
+          background:
+            "radial-gradient(ellipse 30% 90% at 44% 50%, rgba(180,130,60,0.10) 0%, transparent 80%)",
         }}
       />
 
       <HeroBokeh />
 
+      {/* Film grain — same layer covers the entire frame including the photo */}
       <div
-        className="pointer-events-none absolute inset-0 z-[11] opacity-[0.18] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 z-[11] opacity-[0.22] mix-blend-overlay"
         aria-hidden
         style={{
           backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.82  0 0 0 0 0.55  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          backgroundSize: "240px 240px",
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0 0.50  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          backgroundSize: "200px 200px",
         }}
       />
 
       <HeroParticles />
 
-      <div className="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[40%_60%]">
-        <div className="fade-in flex flex-col items-center justify-center px-6 pt-[16vh] pb-24 text-center md:items-start md:pt-0 md:pl-[clamp(2rem,5vw,5rem)] md:pr-6 md:text-left">
+      <div className="relative z-20 grid min-h-screen grid-cols-1 md:grid-cols-[42%_58%]">
+        <div className="fade-in flex flex-col items-center justify-center px-6 pt-[16vh] pb-24 text-center md:items-start md:pt-0 md:pl-[clamp(2rem,5vw,5rem)] md:pr-8 md:text-left">
           <h2
             className="font-display leading-[0.95] tracking-[0.08em]"
             style={{
-              color: "#E8D3B0",
+              color: "#EAD8B8",
               fontSize: "clamp(2.75rem, 6vw, 5rem)",
-              textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+              textShadow: "0 2px 18px rgba(10,6,2,0.9), 0 6px 32px rgba(10,6,2,0.6)",
             }}
           >
             ARUNA
@@ -152,9 +172,9 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           <span
             className="my-1 font-display italic"
             style={{
-              color: "#E8D3B0",
+              color: "#EAD8B8",
               fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              textShadow: "0 2px 14px rgba(0,0,0,0.8)",
+              textShadow: "0 2px 12px rgba(10,6,2,0.85)",
             }}
           >
             &amp;
@@ -162,9 +182,9 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           <h2
             className="font-display leading-[0.95] tracking-[0.08em]"
             style={{
-              color: "#E8D3B0",
+              color: "#EAD8B8",
               fontSize: "clamp(2.75rem, 6vw, 5rem)",
-              textShadow: "0 4px 24px rgba(0,0,0,0.85)",
+              textShadow: "0 2px 18px rgba(10,6,2,0.9), 0 6px 32px rgba(10,6,2,0.6)",
             }}
           >
             SASMITA
@@ -173,11 +193,11 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           <p
             className="mt-8 font-serif italic"
             style={{
-              color: "rgba(232,211,176,0.88)",
+              color: "rgba(230,208,168,0.82)",
               fontSize: "clamp(0.95rem, 1.25vw, 1.15rem)",
               lineHeight: 1.8,
               maxWidth: "32ch",
-              textShadow: "0 2px 10px rgba(0,0,0,0.7)",
+              textShadow: "0 1px 8px rgba(10,6,2,0.75)",
             }}
           >
             Dua jiwa, satu tujuan,
@@ -194,9 +214,10 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           <p
             className="mt-8 font-display"
             style={{
-              color: "#E8D3B0",
+              color: "#EAD8B8",
               letterSpacing: "0.45em",
               fontSize: "clamp(0.85rem, 1vw, 1rem)",
+              textShadow: "0 1px 8px rgba(10,6,2,0.7)",
             }}
           >
             20 - 12 - 2025
@@ -204,7 +225,7 @@ export function HeroSection({ sectionRef, onScrollToPhilosophy }: HeroSectionPro
           <p
             className="mt-3 font-display uppercase"
             style={{
-              color: "rgba(232,211,176,0.75)",
+              color: "rgba(230,208,168,0.7)",
               letterSpacing: "0.55em",
               fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)",
             }}
